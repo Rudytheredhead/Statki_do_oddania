@@ -4,6 +4,7 @@
 #include <vector>
 #include "Punkt.h"
 using namespace std;
+//klasa statek - przechowuje informajce jakie pola statek zajmuje, jaka ma dlugosc i czy zostal zatopiony
 class Statek{
 private:
     int dlugosc;

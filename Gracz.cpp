@@ -36,7 +36,7 @@ bool Gracz::dodaj_statek(Statek* s){
                     continue;
                 }
                 if (plansza[y_spr][x_spr] == " "){
-                    plansza[y_spr][x_spr] = "nie_dostepne";
+                    plansza[y_spr][x_spr] = "nie_dostepne"; //pola w ktorych nie moze byc nowego statku, ale nie wyswietlaja sie jakos zajete podczas rozgrywki
                 }
 
 
@@ -74,7 +74,7 @@ bool Gracz::strzal(Punkt* p, Gracz& przeciwnik){
                                 continue;
                             }
                             if (przeciwnik.plansza[y_spr][x_spr] == " " || przeciwnik.plansza[y_spr][x_spr] == "nie_dostepne"){
-                                przeciwnik.plansza[y_spr][x_spr] = "ulatwione";
+                                przeciwnik.plansza[y_spr][x_spr] = "ulatwione"; //pola obok statku ktore bede widoczne jakby gracz oddal w nie juz strzal w celu ulatwienia rozgrywki. Nie pokazuja sie na swojej planszy
                             }
                         }       
                     }
@@ -130,10 +130,7 @@ void Gracz::rysuj_plansze(bool ukryj_statki){
                 }else{a="O";}
             }
             else if(plansza[j][i]=="nie_dostepne"){
-                if (ukryj_statki){
-                    a=" ";
-                }else{a=" ";}
-
+                a = " ";
                 
             }
             else if(plansza[j][i]=="ulatwione"){

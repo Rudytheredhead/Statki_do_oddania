@@ -45,7 +45,7 @@ Statek::Statek(Punkt* p, Punkt* k, int trafienia){
 
     this -> trafienia = trafienia;
 };
-
+//sprawdza czy punkt p nalezy do tego statku
 bool Statek::sprawdz_trafenie(Punkt* p){
     for (Punkt* pole : pola){
         if (*pole == *p){

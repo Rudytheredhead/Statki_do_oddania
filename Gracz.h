@@ -4,6 +4,8 @@
 #include <vector>
 #include "Statek.h"
 #include"Punkt.h"
+
+//klasa Gracz - przechowuje informajcje o id i statkach
 using namespace std;
 class Gracz{
 private:

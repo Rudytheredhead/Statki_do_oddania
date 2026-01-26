@@ -44,7 +44,7 @@ void ruch(Gracz& obecny, Gracz& przeciwnik){
             
             return;
         }
-        this_thread::sleep_for(1s);// Pauza na 1 sekundy
+        this_thread::sleep_for(1s);// Pauza na 1 sekundy 
     }
     
 }

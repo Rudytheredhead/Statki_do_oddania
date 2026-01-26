@@ -2,6 +2,7 @@
 #define punkt_h
 #include <string>
 using namespace std;
+//klasa punkt - ulatwia "poruszanie sie" po planszy i sprawdzanie czy punkty sa na planszy
 class Punkt{
     private:
         int x;
