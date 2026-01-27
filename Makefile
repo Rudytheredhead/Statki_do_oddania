@@ -7,4 +7,4 @@ prog: $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 clean:
 	rm -f *.o prog
-.PHONY: all clean
+.PHONY: all cleanma
