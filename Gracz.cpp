@@ -116,6 +116,8 @@ void Gracz::rysuj_plansze(bool ukryj_statki){
     
     cout<<"  ";
     cout<<endl;
+    cout<<"  ";
+
     for (int i=0;i<10;i++){
         cout<<" "<<char(i+'a');
     }
