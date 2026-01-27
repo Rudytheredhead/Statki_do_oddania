@@ -15,5 +15,6 @@ class Punkt{
         int get_x(){return x;};
         int get_y(){return y;};
         bool operator==(const Punkt& other) const {return (x == other.x) && (y == other.y);};
+        string na_string();
 };
 #endif

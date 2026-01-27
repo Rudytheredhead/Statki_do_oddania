@@ -1,5 +1,8 @@
 #include"Punkt.h"
 #include <iostream>
+#include <vector>
+#include <utility>
+
 #include"Statek.h"
 #include"Gracz.h"
 using namespace std;
@@ -47,6 +50,7 @@ bool Gracz::dodaj_statek(Statek* s){
 }
 
 bool Gracz::strzal(Punkt* p, Gracz& przeciwnik){
+    
     if (!p->poprawnosc()){
         cout<<"blad: strzal poza plansza"<<endl;
         return false;
@@ -60,6 +64,10 @@ bool Gracz::strzal(Punkt* p, Gracz& przeciwnik){
             cout<<"trafiony !"<<endl;
             
             przeciwnik.plansza[p->get_y()][p->get_x()] = "X";
+            
+            przeciwnik.nowe_punkty.push_back({p->na_string(),"trafienie"});
+            
+
             
             if(s->czy_zatopiony()){
                 cout<<"zatopiony!"<<endl;
@@ -86,7 +94,9 @@ bool Gracz::strzal(Punkt* p, Gracz& przeciwnik){
         
     }
     cout<<"pudlo!"<<endl;
+
     przeciwnik.plansza[p->get_y()][p->get_x()] = "*";
+    przeciwnik.nowe_punkty.push_back({p->na_string(),"pudlo"});
     return true;
 }
 bool Gracz::czy_przegrał(){
@@ -103,8 +113,9 @@ void Gracz::rysuj_plansze(bool ukryj_statki){
     for (int i = 0;i<30;i++){
         cout<<"_";
     }
-    cout<<endl<<endl;
+    
     cout<<"  ";
+    cout<<endl;
     for (int i=0;i<10;i++){
         cout<<" "<<char(i+'a');
     }
@@ -145,5 +156,55 @@ void Gracz::rysuj_plansze(bool ukryj_statki){
             k++;
         }
         cout<<endl;
+
     }
+    for (int i = 0;i<30;i++){
+        cout<<"_";
+    }
+    cout<<endl;
+}
+
+
+void Gracz::opisz_poprzednia_runde(Gracz& przeciwnik){
+    
+    vector<int> trafienia;
+    vector<int> pudla;
+
+    
+    cout<<"w poprzednim ruchu gracz "<<przeciwnik.id<<" :"<<endl;
+    for(Statek* s:nowo_zatopione_statki){
+        cout<<"Zatopil ";
+        s->opisz_statek();
+
+    }
+
+    for (int i = 0; i<nowe_punkty.size();i++){
+        
+        if( nowe_punkty[i].second == "trafienie"){
+            trafienia.push_back(i);
+        }
+        if( nowe_punkty[i].second == "pudlo"){
+            pudla.push_back(i);
+        }
+    }
+    if(trafienia.size()==0){cout<<"nie trafil rzadnego statku"<<endl;}
+    else{
+        cout<<"tarfil "<<trafienia.size()<<" statki na polach: ";
+        for (int idx:trafienia){
+            cout<<nowe_punkty[idx].first<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<"strzelil nie celnie "<<pudla.size()<<" razy, na polach: ";
+    for (int idx:pudla){
+        cout<<nowe_punkty[idx].first<<" ";
+    }
+    cout<<endl;
+    trafienia.clear();
+    pudla.clear();
+    nowe_punkty.clear();
+
+
+
+
 }

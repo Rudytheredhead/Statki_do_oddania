@@ -59,3 +59,6 @@ bool Statek::sprawdz_trafenie(Punkt* p){
     return false;
 }
    
+void Statek::opisz_statek(){
+    cout<<"Statek polozony miedzy "<<poczatek->na_string()<<" a "<<koniec->na_string() <<endl;
+}

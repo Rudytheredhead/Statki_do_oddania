@@ -1,5 +1,6 @@
 #include"Punkt.h"
 #include <iostream>
+#include <string>
 using namespace std;
 //zmiana stringu wprowadzanego przez uzytkowanika na int x,y
 Punkt::Punkt(string wspolrzedne){
@@ -20,3 +21,16 @@ bool Punkt::poprawnosc(){
         return true;
     }
 }
+string Punkt::na_string(){
+    
+    char znak  = x + 'a';
+    char znak2 = y + '1';
+    
+    string text;
+    text += znak;
+    text += znak2;
+    
+    return text;
+
+}
+

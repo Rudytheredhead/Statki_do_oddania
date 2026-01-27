@@ -20,6 +20,7 @@ public:
     int get_dlugosc(){return dlugosc;};
     bool sprawdz_trafenie(Punkt* p);
     vector<Punkt*> get_pola(){return pola;};
+    void opisz_statek();
    
 
 };
